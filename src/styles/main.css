@@ -1,3 +1,14 @@
-@import url(./base/reset.css);
-@import url(./base/global.css);
-@import url(./components/ficha-fit.css);
+/* Base */
+@import url("./base/reset.css");
+@import url("./base/variables.css");
+@import url("./base/global.css");
+
+/* Layout */
+@import url("./base/header.css");
+@import url("./base/nav.css");
+@import url("./base/form.css");
+@import url("./base/list.css");
+@import url("./base/footer.css");
+
+/* Responsividade */
+@import url("./base/media.css");
