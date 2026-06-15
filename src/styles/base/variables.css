@@ -1,0 +1,24 @@
+:root {
+  /* Cores */
+  --bg-primary: #0f172a;
+  --bg-secondary: #1e293b;
+
+  --text-primary: #f8fafc;
+  --text-secondary: #cbd5e1;
+
+  --primary: #22c55e;
+  --primary-hover: #16a34a;
+
+  --danger: #ef4444;
+
+  /* Fonte */
+  --font-primary: "Inter", sans-serif;
+
+  /* Espaçamentos */
+  --spacing-sm: 0.5rem;
+  --spacing-md: 1rem;
+  --spacing-lg: 2rem;
+
+  /* Bordas */
+  --border-radius: 12px;
+}
