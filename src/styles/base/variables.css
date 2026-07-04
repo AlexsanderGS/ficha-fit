@@ -1,14 +1,19 @@
 :root {
-  /* Cores */
+  /* Background */
   --bg-primary: #0f172a;
   --bg-secondary: #1e293b;
 
+  /* Textos */
   --text-primary: #f8fafc;
   --text-secondary: #cbd5e1;
 
-  --primary: #22c55e;
-  --primary-hover: #16a34a;
+  /* Verde da identidade visual */
+  --primary-light: #8bff5a;
+  --primary: #43e660;
+  --primary-dark: #16a34a;
+  --primary-hover: #15803d;
 
+  /* Feedback */
   --danger: #ef4444;
 
   /* Fonte */

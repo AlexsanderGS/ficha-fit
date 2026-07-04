@@ -4,11 +4,11 @@
 @import url("./base/global.css");
 
 /* Layout */
-@import url("./base/header.css");
-@import url("./base/nav.css");
-@import url("./base/form.css");
-@import url("./base/list.css");
-@import url("./base/footer.css");
+@import url("./components/header.css");
+@import url("./components/nav.css");
+@import url("./components/form.css");
+@import url("./components/list.css");
+@import url("./components/footer.css");
 
 /* Responsividade */
-@import url("./base/media.css");
+@import url("./components/media.css");
