@@ -5,6 +5,7 @@
 
 /* Layout */
 @import url("./components/header.css");
+@import url("./components/main.css");
 @import url("./components/nav.css");
 @import url("./components/form.css");
 @import url("./components/list.css");

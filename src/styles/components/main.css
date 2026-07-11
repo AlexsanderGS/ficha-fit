@@ -1,0 +1,61 @@
+.main-content {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 2rem 1rem;
+}
+
+.empty-state {
+  display: flex;
+}
+
+.empty-state-content {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.empty-state-content h2 {
+  text-align: center;
+  font-weight: 500;
+  font-size: 1.7rem;
+}
+
+.empty-state-content h2 span {
+  background: linear-gradient(180deg, #9ef01a 0%, #43e660 100%);
+
+  -webkit-background-clip: text;
+  background-clip: text;
+
+  color: transparent;
+}
+
+.empty-state-content p {
+  text-align: center;
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 1.5;
+}
+
+.btn-create {
+  font-size: 16px;
+  font-weight: 500;
+
+  padding: 0.875rem;
+  border: none;
+  border-radius: 10px;
+
+  background: linear-gradient(180deg, #9ef01a, #43e660);
+
+  color: #081018;
+
+  cursor: pointer;
+  transition: 0.3s;
+
+  width: 100%;
+}
+
+.btn-create:hover {
+  transform: translateY(-2px);
+}
