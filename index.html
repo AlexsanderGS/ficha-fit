@@ -78,6 +78,61 @@
           <button class="btn-create">+ Criar treino</button>
         </div>
       </section>
+
+      <!--Training Form-->
+      <section class="training-form">
+        <h2 class="training-form-name">Criar novo treino</h2>
+        <div class="form-group">
+          <form action="#">
+            <div class="form-field">
+              <label for="training_name">Nome do treino:</label><br />
+              <input type="text" id="training_name" name="training_name" />
+            </div>
+
+            <div class="form-field">
+              <label for="dia-semana">Dia da semana:</label><br />
+              <select name="dia_da_semana" id="dia-semana">
+                <option value="">-- Selecione um dia --</option>
+                <option value="segunda">Segunda-feira</option>
+                <option value="terca">Terça-feira</option>
+                <option value="quarta">Quarta-feira</option>
+                <option value="quinta">Quinta-feira</option>
+                <option value="sexta">Sexta-feira</option>
+                <option value="sabado">Sábado</option>
+                <option value="domingo">Domingo</option>
+              </select>
+            </div>
+            <div class="exercise-list">
+              <div class="exercise-form">
+                <div class="form-field">
+                  <label for="exercise-name">Exercício:</label>
+                  <input type="text" id="exercise-name" name="exercise-name" />
+                </div>
+                <div class="form-field">
+                  <label for="method">Método:</label>
+                  <input type="text" id="method" name="method" />
+                </div>
+                <div class="form-field">
+                  <label for="series">Séries:</label>
+                  <input type="text" id="series" name="series" />
+                </div>
+                <div class="form-field">
+                  <label for="load">Carga:</label>
+                  <input type="text" id="load" name="load" />
+                </div>
+                <div class="form-field">
+                  <label for="rest">Descanso:</label>
+                  <input type="text" id="rest" name="rest" />
+                </div>
+                <button type="button" class="bt-add-exercise">
+                  + Adicionar Exercício
+                </button>
+              </div>
+            </div>
+          </form>
+          <button type="submit">Salvar Treino</button>
+        </div>
+      </section>
     </main>
   </body>
 </html>
