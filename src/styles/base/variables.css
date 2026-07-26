@@ -2,6 +2,9 @@
   /* Background */
   --bg-primary: #2e2e2e;
   --bg-secondary: #1e293b;
+  --input-bg: #1f2937;
+  --input-border: #374151;
+  --input-focus: #43e660;
 
   /* Textos */
   --text-primary: #f8fafc;
