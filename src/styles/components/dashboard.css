@@ -1,9 +1,10 @@
+/* ------------------------- TRANING DASHBOARD -------------------------------*/
 .training-dashboard {
   width: 100%;
   margin-top: 1rem;
   padding: 1rem;
 }
-
+/* ----- DASHBOARD HEADER ------*/
 .dashboard-header {
   display: flex;
   align-items: center;
@@ -42,4 +43,61 @@
   background-clip: text;
 
   color: transparent;
+}
+
+/* ----- DASHBOARD WEEK SELECTOR -----*/
+.week-selector {
+  width: 100%;
+  margin-top: 1rem;
+}
+
+.week-days {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  padding: 0.875rem;
+  gap: 0.3rem;
+}
+
+.day-button {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+
+  width: 56px;
+  height: 65px;
+
+  background: none;
+  color: var(--text-primary);
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+
+  gap: 0.5rem;
+}
+
+.day-button span {
+  font-size: 0.9rem;
+  font-weight: 500;
+}
+
+.day-button strong {
+  font-size: 1rem;
+  font-weight: 600;
+}
+
+.day-active {
+  padding-inline: 0.5rem;
+  color: white;
+  background: color-mix(in srgb, #16a34a 60%, black);
+}
+
+.day-button:hover {
+  background: color-mix(in srgb, #16a34a 60%, black);
+  transition:
+    background 0.25s,
+    transform 0.2s;
+
+  transform: translateY(-2px);
 }
