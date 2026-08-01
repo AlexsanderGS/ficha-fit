@@ -1,0 +1,45 @@
+.training-dashboard {
+  width: 100%;
+  margin-top: 1rem;
+  padding: 1rem;
+}
+
+.dashboard-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.dashboard-header button {
+  width: 48px;
+  height: 48px;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  background: none;
+  border: none;
+  cursor: pointer;
+}
+
+.dashboard-header img {
+  width: 28px;
+  height: 28px;
+  stroke-width: 1px;
+  filter: invert(1);
+}
+
+.dashboard-header-title h2 {
+  font-weight: 600;
+  font-size: 1.2rem;
+}
+
+.dashboard-header-title span {
+  background: linear-gradient(180deg, #9ef01a 0%, #43e660 100%);
+
+  -webkit-background-clip: text;
+  background-clip: text;
+
+  color: transparent;
+}
