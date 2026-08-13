@@ -101,3 +101,46 @@
 
   transform: translateY(-2px);
 }
+
+/* ----- TRAINING DAY -----*/
+/* HEADER */
+.training-day {
+  display: flex;
+  flex-direction: column;
+  margin-top: 1rem;
+  gap: 1rem;
+}
+
+.training-day-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.training-day-info {
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+}
+
+.training-day-info h2 {
+  font-size: 22px;
+  font-weight: 600;
+}
+
+.training-day-info p {
+  font-size: 18px;
+  font-weight: 500;
+}
+
+.btn-edit-training {
+  font-size: 0.9rem;
+  font-weight: 600;
+
+  padding: 0.6rem 1.5rem;
+
+  border: none;
+  border-radius: 10px;
+
+  cursor: pointer;
+}
