@@ -144,3 +144,68 @@
 
   cursor: pointer;
 }
+
+/* EXERCISE LIST */
+.exercise-list {
+  display: flex;
+  flex-direction: column;
+  margin-top: 0.875rem;
+  gap: 1rem;
+}
+
+.exercise-card {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+
+  padding: 1rem;
+
+  background: var(--bg-secondary);
+  border: none;
+  border-radius: 12px;
+}
+
+.exercise-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.exercise-header h3 {
+  font-size: 18px;
+  font-weight: 600;
+  flex: 1;
+  min-width: 0;
+}
+
+.exercise-button {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  flex-shrink: 0;
+}
+
+.exercise-button button {
+  font-size: 0.7rem;
+  font-weight: 600;
+
+  padding: 0.6rem 0.75rem;
+
+  border: none;
+  border-radius: 10px;
+
+  cursor: pointer;
+}
+
+.exercise-info {
+  display: flex;
+  flex-direction: column;
+  align-items: start;
+  justify-content: space-between;
+  gap: 1rem;
+}
+
+.exercise-info span {
+  font-size: 0.875rem;
+  color: var(--text-secondary);
+}
