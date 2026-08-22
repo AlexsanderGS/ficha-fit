@@ -1,0 +1,49 @@
+/* TABLET VERSION */
+@media (min-width: 768px) {
+  .header {
+    background-image: url(../../assets/images/bg-image-header-tablet.png);
+  }
+
+  .hero-content {
+    display: flex;
+
+    max-width: 768px;
+  }
+
+  .hero-brand img {
+    width: 100px;
+  }
+
+  .hero-brand h1 {
+    font-size: 2.8rem;
+  }
+
+  .description {
+    display: flex;
+
+    font-size: 26px;
+    line-height: 1.5;
+  }
+
+  .hero-features {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+
+    padding: 1.5rem;
+  }
+
+  .feature {
+    flex: 1;
+    gap: 0.75;
+  }
+
+  .feature p {
+    font-weight: 400;
+    font-size: 1.1rem;
+  }
+
+  .feature img {
+    width: 30px;
+  }
+}
