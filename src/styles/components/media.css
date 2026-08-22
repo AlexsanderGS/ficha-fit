@@ -1,7 +1,10 @@
 /* TABLET VERSION */
 @media (min-width: 768px) {
+  /* HEADER - HERO SECTION */
   .header {
     background-image: url(../../assets/images/bg-image-header-tablet.png);
+
+    margin-bottom: 1.5rem;
   }
 
   .hero-content {
@@ -45,5 +48,20 @@
 
   .feature img {
     width: 30px;
+  }
+
+  /* MAIN - EMPTY STATE */
+  .empty-state-content h2 {
+    font-size: 2.2rem;
+  }
+
+  .empty-state-content p {
+    font-size: 18px;
+  }
+
+  .btn-create {
+    font-size: 18px;
+
+    padding: 1rem;
   }
 }
