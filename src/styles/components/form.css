@@ -64,7 +64,6 @@ select:focus {
 }
 
 /* Exercise */
-
 .exercise-list {
   display: flex;
   flex-direction: column;
