@@ -100,11 +100,9 @@ select:focus {
 
   cursor: pointer;
   transition: 0.3s;
-
-  width: 100%;
 }
 
-button[type="submit"] {
+.btn-save-training {
   font-size: 16px;
   font-weight: 600;
 
