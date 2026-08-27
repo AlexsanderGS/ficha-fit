@@ -198,6 +198,7 @@
 
 /* DESKTOP */
 @media (min-width: 1440px) {
+  /* HEADER - HERO SECTION */
   .header {
     background-image: url(../../assets/images/bg-image-header-desktop.png);
   }
@@ -233,5 +234,24 @@
 
   .feature img {
     width: 40px;
+  }
+
+  /* MAIN CONTENT */
+  .main-content {
+    width: 100%;
+  }
+
+  /* MAIN - EMPTY STATE */
+  .empty-state-content h2 {
+    font-size: 2.5rem;
+  }
+
+  .empty-state-content p {
+    font-size: 22px;
+    line-height: 1.2;
+  }
+
+  .btn-create {
+    font-size: 22px;
   }
 }
