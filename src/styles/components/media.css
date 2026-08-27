@@ -1,4 +1,4 @@
-/* TABLET VERSION */
+/* TABLET  */
 @media (min-width: 768px) {
   /* HEADER - HERO SECTION */
   .header {
@@ -193,5 +193,45 @@
 
   .exercise-info span {
     font-size: 1rem;
+  }
+}
+
+/* DESKTOP */
+@media (min-width: 1440px) {
+  .header {
+    background-image: url(../../assets/images/bg-image-header-desktop.png);
+  }
+
+  .hero-content {
+    display: flex;
+
+    max-width: 1440px;
+  }
+
+  .hero-brand img {
+    width: 150px;
+  }
+
+  .hero-brand h1 {
+    font-size: 4rem;
+  }
+
+  .description {
+    display: flex;
+
+    font-size: 34px;
+    line-height: 1.5;
+  }
+
+  .feature {
+    gap: 1rem;
+  }
+
+  .feature p {
+    font-size: 1.5rem;
+  }
+
+  .feature img {
+    width: 40px;
   }
 }
