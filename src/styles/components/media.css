@@ -70,7 +70,6 @@
   }
 
   /* MAIN - TRAINING FORM */
-
   .training-form {
     width: 100%;
     padding: 1rem;
@@ -247,11 +246,46 @@
   }
 
   .empty-state-content p {
-    font-size: 22px;
+    font-size: 24px;
     line-height: 1.2;
   }
 
   .btn-create {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    align-self: center;
     font-size: 22px;
+
+    width: 50%;
+  }
+
+  /* MAIN - TRAINING FORM */
+  .training-form-name {
+    font-size: 36px;
+  }
+
+  label {
+    font-size: 24px;
+  }
+
+  /* TRAINING FORM - EXERCISE - BUTTONS */
+  .bt-add-exercise {
+    font-size: 20px;
+    padding: 1rem;
+
+    width: 20%;
+  }
+
+  .btn-save-training {
+    font-size: 20px;
+    padding: 1.2rem;
+
+    width: 30%;
+  }
+
+  input,
+  select {
+    font-size: 20px;
   }
 }
