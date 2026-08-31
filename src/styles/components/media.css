@@ -288,4 +288,49 @@
   select {
     font-size: 20px;
   }
+
+  /*  TRANING DASHBOARD */
+  .training-dashboard {
+    display: grid;
+    grid-template-columns: 220px 1fr;
+
+    min-height: 100vh;
+
+    align-items: stretch;
+  }
+
+  .dashboard-header {
+    grid-column: 1;
+    grid-row: 1;
+
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    width: 100%;
+  }
+
+  .week-selector {
+    grid-column: 1;
+    grid-row: 2;
+
+    width: 100%;
+
+    align-self: start;
+  }
+
+  .training-day {
+    grid-column: 2;
+    grid-row: 1 / 3;
+  }
+
+  /* DASHBOARD WEEK SELECTOR */
+  .week-days {
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+
+    padding: 1rem;
+    gap: 0.5rem;
+  }
 }
