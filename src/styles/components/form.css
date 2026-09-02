@@ -9,6 +9,10 @@
   background: var(--bg-secondary);
   border-radius: 16px;
   padding: 1.5rem;
+
+  border-radius: 12px;
+  background: var(--bg-secondary);
+  border: 1px solid rgba(255, 255, 255, 0.4);
 }
 
 .training-form-name {
@@ -79,7 +83,7 @@ select:focus {
 
   border-radius: 12px;
   background: var(--bg-secondary);
-  border: 1px solid rgba(255, 255, 255, 0.08);
+  border: 1px solid rgba(255, 255, 255, 0.25);
 }
 
 /* Buttons */

@@ -1,9 +1,9 @@
 :root {
   /* Background */
-  --bg-primary: #2e2e2e;
-  --bg-secondary: #1e293b;
-  --input-bg: #1f2937;
-  --input-border: #374151;
+  --bg-primary: #1c1c1c;
+  --bg-secondary: #1c1c1c;
+  --input-bg: #1c1c1c;
+  --input-border: #a9a9a9;
   --input-focus: #43e660;
 
   /* Textos */

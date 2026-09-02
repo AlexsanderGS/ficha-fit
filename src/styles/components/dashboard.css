@@ -107,6 +107,7 @@
 .training-day {
   display: flex;
   flex-direction: column;
+
   margin-top: 1rem;
   gap: 1rem;
 }
@@ -195,6 +196,11 @@
   border-radius: 10px;
 
   cursor: pointer;
+}
+
+.delete-btn {
+  background-color: var(--danger);
+  color: white;
 }
 
 .exercise-info {
