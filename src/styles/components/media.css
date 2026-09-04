@@ -193,6 +193,19 @@
   .exercise-info span {
     font-size: 1rem;
   }
+
+  footer {
+    gap: 0;
+  }
+
+  .footer-infos {
+    font-size: 1rem;
+  }
+
+  .footer-links img {
+    width: 40px;
+    height: 40px;
+  }
 }
 
 /* DESKTOP */
@@ -392,5 +405,22 @@
   /* EXERCISE LIST */
   .exercise-info span {
     font-size: 1.3rem;
+  }
+
+  .footer {
+    padding: 1rem 2rem;
+  }
+
+  .footer-infos {
+    font-size: 1.2rem;
+  }
+
+  .footer-links {
+    gap: 1rem;
+  }
+
+  .footer-links img {
+    width: 46px;
+    height: 46px;
   }
 }
