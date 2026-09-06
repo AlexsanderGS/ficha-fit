@@ -147,7 +147,7 @@
 }
 
 /* EXERCISE LIST */
-.exercise-list {
+.exercise-card-list {
   display: flex;
   flex-direction: column;
   margin-top: 0.875rem;
