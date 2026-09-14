@@ -9,7 +9,6 @@ export function initExercise() {
 
     const newExerciseForm = firstExerciseForm.cloneNode(true);
 
-    exerciseList.appendChild(exerciseForm);
     exerciseList.appendChild(newExerciseForm);
   });
 

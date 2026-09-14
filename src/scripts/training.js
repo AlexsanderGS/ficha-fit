@@ -4,6 +4,16 @@ export function initTraining() {
   form.addEventListener("submit", (event) => {
     event.preventDefault();
 
-    console.log("Formulário enviado!");
+    const formData = new FormData(form);
+    const trainingData = Object.fromEntries(formData);
+    const exerciseForms = document.querySelectorAll(".exercise-form");
+
+    exerciseForms.forEach((exerciseForm) => {
+      const exerciseName = exerciseForm.querySelector('[name="exercise-name"]');
+      console.log(exerciseName.value);
+    });
+
+    console.log(trainingData);
+    console.log(exerciseForms);
   });
 }
