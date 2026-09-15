@@ -10,7 +10,22 @@ export function initTraining() {
 
     exerciseForms.forEach((exerciseForm) => {
       const exerciseName = exerciseForm.querySelector('[name="exercise-name"]');
-      console.log(exerciseName.value);
+      const method = exerciseForm.querySelector('[name="method"]');
+      const series = exerciseForm.querySelector('[name="series"]');
+      const repetitions = exerciseForm.querySelector('[name="repetitions"]');
+      const load = exerciseForm.querySelector('[name="load"]');
+      const rest = exerciseForm.querySelector('[name="rest"]');
+
+      const exercise = {
+        name: exerciseName.value,
+        method: method.value,
+        series: series.value,
+        repetitions: repetitions.value,
+        load: load.value,
+        rest: rest.value,
+      };
+
+      console.log(exercise);
     });
 
     console.log(trainingData);
