@@ -1,5 +1,6 @@
 export function initTraining() {
   const form = document.querySelector(".training-form form");
+  const exercises = [];
 
   form.addEventListener("submit", (event) => {
     event.preventDefault();
@@ -25,8 +26,9 @@ export function initTraining() {
         rest: rest.value,
       };
 
-      console.log(exercise);
+      exercises.push(exercise);
     });
+    console.log(exercises);
 
     console.log(trainingData);
     console.log(exerciseForms);
