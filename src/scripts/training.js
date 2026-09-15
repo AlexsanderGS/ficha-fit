@@ -6,7 +6,11 @@ export function initTraining() {
     event.preventDefault();
 
     const formData = new FormData(form);
-    const trainingData = Object.fromEntries(formData);
+    const trainingData = {
+      training_name: formData.get("training_name"),
+      dia_da_semana: formData.get("dia_da_semana"),
+    };
+
     const exerciseForms = document.querySelectorAll(".exercise-form");
 
     exerciseForms.forEach((exerciseForm) => {
@@ -28,9 +32,11 @@ export function initTraining() {
 
       exercises.push(exercise);
     });
-    console.log(exercises);
 
-    console.log(trainingData);
-    console.log(exerciseForms);
+    const training = {
+      ...trainingData,
+      exercises: exercises,
+    };
+    console.log(training);
   });
 }
