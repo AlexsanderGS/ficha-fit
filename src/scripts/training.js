@@ -1,11 +1,13 @@
 export function initTraining() {
   const form = document.querySelector(".training-form form");
-  const exercises = [];
 
   form.addEventListener("submit", (event) => {
     event.preventDefault();
 
+    const exercises = [];
+
     const formData = new FormData(form);
+
     const trainingData = {
       training_name: formData.get("training_name"),
       dia_da_semana: formData.get("dia_da_semana"),
