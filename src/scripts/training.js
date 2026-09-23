@@ -39,6 +39,10 @@ export function initTraining() {
       ...trainingData,
       exercises: exercises,
     };
+    const trainingJSON = JSON.stringify(training);
+    localStorage.setItem("training", trainingJSON);
+    console.log(trainingJSON);
+
     console.log(training);
   });
 }
