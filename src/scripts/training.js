@@ -1,6 +1,10 @@
 export function initTraining() {
   const form = document.querySelector(".training-form form");
 
+  const trainingJSON = localStorage.getItem("training");
+  const training = JSON.parse(trainingJSON);
+  console.log(training);
+
   form.addEventListener("submit", (event) => {
     event.preventDefault();
 
