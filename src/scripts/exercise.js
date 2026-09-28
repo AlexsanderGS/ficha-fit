@@ -1,15 +1,22 @@
 export function initExercise() {
   const addExerciseButton = document.querySelector(".bt-add-exercise");
   const exerciseList = document.querySelector(".exercise-list");
-  const firstExerciseForm = document.querySelector(".exercise-form");
+  const firstExerciseItem = document.querySelector(".exercise-item");
+
+  function addExercise() {
+    const newExerciseItem = firstExerciseItem.cloneNode(true);
+    const newAddExerciseButton =
+      newExerciseItem.querySelector(".bt-add-exercise");
+
+    newAddExerciseButton.addEventListener("click", () => {
+      addExercise();
+    });
+
+    exerciseList.appendChild(newExerciseItem);
+  }
 
   addExerciseButton.addEventListener("click", () => {
-    const exerciseForm = document.createElement("div");
-    exerciseForm.classList.add("exercise-form");
-
-    const newExerciseForm = firstExerciseForm.cloneNode(true);
-
-    exerciseList.appendChild(newExerciseForm);
+    addExercise();
   });
 
   console.log(addExerciseButton);

@@ -103,35 +103,41 @@
               </select>
             </div>
             <div class="exercise-list">
-              <div class="exercise-form">
-                <div class="form-field">
-                  <label for="exercise-name">Exercício:</label>
-                  <input type="text" id="exercise-name" name="exercise-name" />
+              <div class="exercise-item">
+                <div class="exercise-form">
+                  <div class="form-field">
+                    <label for="exercise-name">Exercício:</label>
+                    <input
+                      type="text"
+                      id="exercise-name"
+                      name="exercise-name"
+                    />
+                  </div>
+                  <div class="form-field">
+                    <label for="method">Método:</label>
+                    <input type="text" id="method" name="method" />
+                  </div>
+                  <div class="form-field">
+                    <label for="series">Séries:</label>
+                    <input type="text" id="series" name="series" />
+                  </div>
+                  <div class="form-field">
+                    <label for="repetitions">Repetições:</label>
+                    <input type="text" id="repetitions" name="repetitions" />
+                  </div>
+                  <div class="form-field">
+                    <label for="load">Carga:</label>
+                    <input type="text" id="load" name="load" />
+                  </div>
+                  <div class="form-field">
+                    <label for="rest">Descanso:</label>
+                    <input type="text" id="rest" name="rest" />
+                  </div>
                 </div>
-                <div class="form-field">
-                  <label for="method">Método:</label>
-                  <input type="text" id="method" name="method" />
-                </div>
-                <div class="form-field">
-                  <label for="series">Séries:</label>
-                  <input type="text" id="series" name="series" />
-                </div>
-                <div class="form-field">
-                  <label for="repetitions">Repetições:</label>
-                  <input type="text" id="repetitions" name="repetitions" />
-                </div>
-                <div class="form-field">
-                  <label for="load">Carga:</label>
-                  <input type="text" id="load" name="load" />
-                </div>
-                <div class="form-field">
-                  <label for="rest">Descanso:</label>
-                  <input type="text" id="rest" name="rest" />
-                </div>
+                <button type="button" class="bt-add-exercise">
+                  + Adicionar Exercício
+                </button>
               </div>
-              <button type="button" class="bt-add-exercise">
-                + Adicionar Exercício
-              </button>
             </div>
             <button type="submit" class="btn-save-training">
               Salvar Treino
