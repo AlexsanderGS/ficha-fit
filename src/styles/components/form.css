@@ -78,7 +78,7 @@ select:focus {
   gap: 1.5rem;
 }
 
-.exercise-form {
+.exercise-item {
   display: flex;
   flex-direction: column;
 
