@@ -4,6 +4,11 @@
   margin-top: 1rem;
   padding: 1rem;
 }
+
+.training-dashboard[hidden] {
+  display: none;
+}
+
 /*  DASHBOARD HEADER */
 .dashboard-header {
   display: flex;

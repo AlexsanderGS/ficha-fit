@@ -7,8 +7,10 @@ initExercise();
 const createButton = document.querySelector(".btn-create");
 const emptyState = document.querySelector(".empty-state");
 const trainingForm = document.querySelector(".training-form");
+const trainingDashboard = document.querySelector(".training-dashboard");
 
 createButton.addEventListener("click", () => {
   emptyState.hidden = true;
   trainingForm.hidden = false;
+  trainingDashboard.hidden = true;
 });

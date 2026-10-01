@@ -61,6 +61,12 @@ export function initTraining() {
       }
     });
 
+    const trainingForm = document.querySelector(".training-form");
+    const trainingDashboard = document.querySelector(".training-dashboard");
+
+    trainingForm.hidden = true;
+    trainingDashboard.hidden = false;
+
     console.log(trainings);
   });
 }
