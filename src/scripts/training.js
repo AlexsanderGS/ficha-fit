@@ -52,6 +52,15 @@ export function initTraining() {
 
     localStorage.setItem("training", JSON.stringify(trainings));
 
+    form.reset();
+
+    const exerciseItems = document.querySelectorAll(".exercise-item");
+    exerciseItems.forEach((exerciseItem, index) => {
+      if (index > 0) {
+        exerciseItem.remove();
+      }
+    });
+
     console.log(trainings);
   });
 }
