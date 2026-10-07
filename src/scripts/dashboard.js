@@ -9,7 +9,23 @@ export function initDashboard() {
   const training = trainings[0];
 
   const trainingName = document.querySelector(".training-day-info h2");
+  const exerciseCardList = document.querySelector(".exercise-card-list");
+
   trainingName.textContent = training.training_name;
+
+  training.exercises.forEach((exercise) => {
+    console.log("Exercício encontrado:", exercise.name);
+    const exerciseCard = document.createElement("li");
+    exerciseCard.classList.add("exercise-card");
+
+    const exerciseTitle = document.createElement("h3");
+    exerciseTitle.textContent = exercise.name;
+
+    exerciseCard.appendChild(exerciseTitle);
+    exerciseCardList.appendChild(exerciseCard);
+
+    console.log(exerciseCard);
+  });
 
   console.log(trainings);
 }
