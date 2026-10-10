@@ -30,6 +30,16 @@ export function initDashboard() {
     });
   }
 
+  const dayButtons = document.querySelectorAll(".day-button");
+
+  dayButtons.forEach((button) => {
+    button.addEventListener("click", () => {
+      const selectedDay = button.dataset.day;
+
+      console.log("Dia selecionado: ", selectedDay);
+    });
+  });
+
   renderDashboard();
   return renderDashboard;
 
