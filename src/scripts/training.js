@@ -1,4 +1,4 @@
-export function initTraining() {
+export function initTraining(renderDashboard) {
   const form = document.querySelector(".training-form form");
 
   const trainingJSON = localStorage.getItem("training");
@@ -51,6 +51,8 @@ export function initTraining() {
     trainings.push(training);
 
     localStorage.setItem("training", JSON.stringify(trainings));
+
+    renderDashboard();
 
     form.reset();
 
