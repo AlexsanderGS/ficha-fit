@@ -1,4 +1,24 @@
 export function initDashboard() {
+  const weekdays = [
+    "segunda",
+    "terca",
+    "quarta",
+    "quinta",
+    "sexta",
+    "sabado",
+    "domingo",
+  ];
+
+  const dayNames = {
+    segunda: "Segunda-feira",
+    terca: "Terça-feira",
+    quarta: "Quarta-feira",
+    quinta: "Quinta-feira",
+    sexta: "Sexta-feira",
+    sabado: "Sábado",
+    domingo: "Domingo",
+  };
+
   function renderDashboard(selectedDay) {
     const trainingJSON = localStorage.getItem("training");
 
@@ -13,22 +33,29 @@ export function initDashboard() {
 
     const trainingName = document.querySelector(".training-day-info h2");
     const exerciseCardList = document.querySelector(".exercise-card-list");
-    exerciseCardList.innerHTML = "";
-
     const trainingDay = document.querySelector(".training-day-info p");
 
-    const dayNames = {
-      segunda: "Segunda-feira",
-      terca: "Terça-feira",
-      quarta: "Quarta-feira",
-      quinta: "Quinta-feira",
-      sexta: "Sexta-feira",
-      sabado: "Sábado",
-      domingo: "Domingo",
-    };
+    exerciseCardList.innerHTML = "";
 
     if (selectedDay && trainingDay) {
-      trainingDay.textContent = dayNames[selectedDay] || "";
+      const today = new Date();
+
+      // Índice da semana: segunda = 0, domingo = 6
+      const currentDayIndex = (today.getDay() + 6) % 7;
+      const selectedDayIndex = weekdays.indexOf(selectedDay);
+
+      // Calcula a data do dia selecionado na semana atual
+      const selectedDate = new Date(today);
+      selectedDate.setDate(
+        today.getDate() + selectedDayIndex - currentDayIndex,
+      );
+
+      const formattedDate = selectedDate.toLocaleDateString("pt-BR", {
+        day: "numeric",
+        month: "long",
+      });
+
+      trainingDay.textContent = `${dayNames[selectedDay]}, ${formattedDate}`;
     }
 
     if (!training) {
@@ -89,9 +116,17 @@ export function initDashboard() {
     });
   });
 
-  const activeDayButton = document.querySelector(".day-button.day-active");
-  renderDashboard(activeDayButton?.dataset.day);
-  return renderDashboard;
+  const today = new Date();
+  const todayIndex = (today.getDay() + 6) % 7;
+  const todayName = weekdays[todayIndex];
 
-  console.log(trainings);
+  dayButtons.forEach((button) => {
+    const isToday = button.dataset.day === todayName;
+
+    button.classList.toggle("day-active", isToday);
+  });
+
+  renderDashboard(todayName);
+
+  return renderDashboard;
 }
