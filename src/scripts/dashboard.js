@@ -54,7 +54,8 @@ export function initDashboard() {
     });
   });
 
-  renderDashboard();
+  const activeDayButton = document.querySelector(".day-button.day-active");
+  renderDashboard(activeDayButton?.dataset.day);
   return renderDashboard;
 
   console.log(trainings);
