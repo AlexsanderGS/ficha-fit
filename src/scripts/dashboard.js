@@ -15,6 +15,22 @@ export function initDashboard() {
     const exerciseCardList = document.querySelector(".exercise-card-list");
     exerciseCardList.innerHTML = "";
 
+    const trainingDay = document.querySelector(".training-day-info p");
+
+    const dayNames = {
+      segunda: "Segunda-feira",
+      terca: "Terça-feira",
+      quarta: "Quarta-feira",
+      quinta: "Quinta-feira",
+      sexta: "Sexta-feira",
+      sabado: "Sábado",
+      domingo: "Domingo",
+    };
+
+    if (selectedDay && trainingDay) {
+      trainingDay.textContent = dayNames[selectedDay] || "";
+    }
+
     if (!training) {
       trainingName.textContent = "Nenhum treino cadastrado para este dia";
       exerciseCardList.innerHTML = "";
@@ -24,17 +40,36 @@ export function initDashboard() {
     trainingName.textContent = training.training_name;
 
     training.exercises.forEach((exercise) => {
-      console.log("Exercício encontrado:", exercise.name);
       const exerciseCard = document.createElement("li");
       exerciseCard.classList.add("exercise-card");
 
+      // Nome do exercício
       const exerciseTitle = document.createElement("h3");
       exerciseTitle.textContent = exercise.name;
-
       exerciseCard.appendChild(exerciseTitle);
-      exerciseCardList.appendChild(exerciseCard);
 
-      console.log(exerciseCard);
+      // Informações do exercício
+      const exerciseDetails = [
+        ["Séries", exercise.series],
+        ["Repetições", exercise.repetitions],
+        ["Carga", exercise.load],
+        ["Intervalo", exercise.rest],
+      ];
+
+      exerciseDetails.forEach(([label, value]) => {
+        const detail = document.createElement("p");
+        detail.textContent = `${label}: ${value || "Não informado"}`;
+        exerciseCard.appendChild(detail);
+      });
+
+      // Método, quando informado
+      if (exercise.method && exercise.method.trim() !== "") {
+        const method = document.createElement("p");
+        method.textContent = `Método: ${exercise.method}`;
+        exerciseCard.appendChild(method);
+      }
+
+      exerciseCardList.appendChild(exerciseCard);
     });
   }
 
