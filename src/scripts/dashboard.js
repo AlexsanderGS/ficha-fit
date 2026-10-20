@@ -1,5 +1,5 @@
 export function initDashboard() {
-  function renderDashboard() {
+  function renderDashboard(selectedDay) {
     const trainingJSON = localStorage.getItem("training");
 
     if (!trainingJSON) {
@@ -7,11 +7,19 @@ export function initDashboard() {
     }
 
     const trainings = JSON.parse(trainingJSON);
-    const training = trainings[0];
+    const training = selectedDay
+      ? trainings.find((item) => item.dia_da_semana === selectedDay)
+      : trainings[0];
 
     const trainingName = document.querySelector(".training-day-info h2");
     const exerciseCardList = document.querySelector(".exercise-card-list");
     exerciseCardList.innerHTML = "";
+
+    if (!training) {
+      trainingName.textContent = "Nenhum treino cadastrado para este dia";
+      exerciseCardList.innerHTML = "";
+      return;
+    }
 
     trainingName.textContent = training.training_name;
 
@@ -36,7 +44,13 @@ export function initDashboard() {
     button.addEventListener("click", () => {
       const selectedDay = button.dataset.day;
 
-      console.log("Dia selecionado: ", selectedDay);
+      dayButtons.forEach((dayButton) => {
+        dayButton.classList.remove("day-active");
+      });
+
+      button.classList.add("day-active");
+
+      renderDashboard(selectedDay);
     });
   });
 
