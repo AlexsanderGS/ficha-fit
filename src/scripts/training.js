@@ -6,6 +6,83 @@ export function initTraining(renderDashboard) {
   const editButton = document.querySelector(".btn-edit-training");
   const exerciseList = document.querySelector(".exercise-list");
 
+  const dashboardAddExerciseButton = document.querySelector(
+    ".training-day > .bt-add-exercise",
+  );
+
+  const trainingNameField = form.elements
+    .namedItem("training_name")
+    .closest(".form-field");
+
+  const trainingDayField = form.elements
+    .namedItem("dia_da_semana")
+    .closest(".form-field");
+
+  function showTrainingFields() {
+    trainingNameField.hidden = false;
+    trainingDayField.hidden = false;
+  }
+
+  function resetExerciseFields() {
+    const exerciseItems = exerciseList.querySelectorAll(".exercise-item");
+
+    exerciseItems.forEach((item, index) => {
+      if (index > 0) item.remove();
+    });
+
+    exerciseList.querySelectorAll("input").forEach((input) => {
+      input.value = "";
+    });
+  }
+
+  dashboardAddExerciseButton.addEventListener("click", () => {
+    const activeDayButton = document.querySelector(".day-button.day-active");
+
+    if (!activeDayButton) return;
+
+    const selectedDay = activeDayButton.dataset.day;
+    const savedTrainings = localStorage.getItem("training");
+    const trainings = savedTrainings ? JSON.parse(savedTrainings) : [];
+
+    const trainingExists = trainings.some(
+      (item) => item.dia_da_semana === selectedDay,
+    );
+
+    if (!trainingExists) {
+      alert("Cadastre um treino para este dia antes de adicionar exercícios.");
+      return;
+    }
+
+    form.reset();
+    resetExerciseFields();
+
+    delete form.dataset.editingDay;
+    form.dataset.addingExerciseDay = selectedDay;
+
+    const selectedTraining = trainings.find(
+      (item) => item.dia_da_semana === selectedDay,
+    );
+
+    form.elements.namedItem("training_name").value =
+      selectedTraining.training_name;
+
+    form.elements.namedItem("dia_da_semana").value =
+      selectedTraining.dia_da_semana;
+
+    showTrainingFields();
+
+    // Mantém os dados visíveis, mas impede alterações neste modo.
+    form.elements.namedItem("training_name").readOnly = true;
+    form.elements.namedItem("dia_da_semana").disabled = true;
+
+    document.querySelector(".training-form-name").textContent =
+      "Adicionar exercício";
+
+    emptyState.hidden = true;
+    trainingDashboard.hidden = true;
+    trainingForm.hidden = false;
+  });
+
   // Abre o formulário com os dados do treino selecionado.
   editButton.addEventListener("click", () => {
     const activeDayButton = document.querySelector(".day-button.day-active");
@@ -22,6 +99,9 @@ export function initTraining(renderDashboard) {
 
     // Não abre a edição se não existir treino nesse dia.
     if (!training) {
+      form.elements.namedItem("training_name").readOnly = false;
+      form.elements.namedItem("dia_da_semana").disabled = false;
+
       // Abre o formulário para cadastrar o primeiro treino desse dia.
       form.reset();
       delete form.dataset.editingDay;
@@ -98,6 +178,68 @@ export function initTraining(renderDashboard) {
 
   form.addEventListener("submit", (event) => {
     event.preventDefault();
+
+    // Modo especial: adicionar um exercício a um treino existente.
+    const addingExerciseDay = form.dataset.addingExerciseDay;
+
+    if (addingExerciseDay) {
+      const exerciseForm = exerciseList.querySelector(".exercise-form");
+
+      const getValue = (name) =>
+        exerciseForm.querySelector(`[name="${name}"]`).value.trim();
+
+      const newExercise = {
+        name: getValue("exercise-name"),
+        method: getValue("method"),
+        series: getValue("series"),
+        repetitions: getValue("repetitions"),
+        load: getValue("load"),
+        rest: getValue("rest"),
+      };
+
+      if (!newExercise.name) {
+        alert("Informe o nome do exercício.");
+        return;
+      }
+
+      const savedTrainings = localStorage.getItem("training");
+      const trainings = savedTrainings ? JSON.parse(savedTrainings) : [];
+
+      const training = trainings.find(
+        (item) => item.dia_da_semana === addingExerciseDay,
+      );
+
+      if (!training) {
+        alert("Não foi possível encontrar o treino desse dia.");
+        return;
+      }
+
+      // Acrescenta o exercício sem apagar os anteriores.
+      training.exercises = training.exercises || [];
+      training.exercises.push(newExercise);
+
+      localStorage.setItem("training", JSON.stringify(trainings));
+
+      delete form.dataset.addingExerciseDay;
+
+      form.reset();
+      resetExerciseFields();
+      showTrainingFields();
+
+      document.querySelector(".training-form-name").textContent =
+        "Criar novo treino";
+
+      // Reabilita os campos para os próximos usos do formulário.
+      form.elements.namedItem("training_name").readOnly = false;
+      form.elements.namedItem("dia_da_semana").disabled = false;
+
+      trainingForm.hidden = true;
+      trainingDashboard.hidden = false;
+
+      renderDashboard(addingExerciseDay);
+
+      return;
+    }
 
     const formData = new FormData(form);
     const editingDay = form.dataset.editingDay;
