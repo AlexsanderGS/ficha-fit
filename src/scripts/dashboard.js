@@ -9,6 +9,30 @@ export function initDashboard() {
     "domingo",
   ];
 
+  function updateWeekDates() {
+    const today = new Date();
+
+    // Converte domingo = 0 para segunda = 0
+    const currentDayIndex = (today.getDay() + 6) % 7;
+
+    // Encontra a segunda-feira da semana atual
+    const monday = new Date(today);
+    monday.setDate(today.getDate() - currentDayIndex);
+
+    const dayButtons = document.querySelectorAll(".day-button");
+
+    dayButtons.forEach((button, index) => {
+      const date = new Date(monday);
+      date.setDate(monday.getDate() + index);
+
+      const dayNumber = button.querySelector("strong");
+
+      if (dayNumber) {
+        dayNumber.textContent = date.getDate();
+      }
+    });
+  }
+
   const dayNames = {
     segunda: "Segunda-feira",
     terca: "Terça-feira",
@@ -115,6 +139,8 @@ export function initDashboard() {
       renderDashboard(selectedDay);
     });
   });
+
+  updateWeekDates();
 
   const today = new Date();
   const todayIndex = (today.getDay() + 6) % 7;
