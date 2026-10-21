@@ -5,6 +5,12 @@ export function initExercise() {
 
   function addExercise() {
     const newExerciseItem = firstExerciseItem.cloneNode(true);
+
+    // Limpa os campos do novo exercício.
+    newExerciseItem.querySelectorAll("input").forEach((input) => {
+      input.value = "";
+    });
+
     const newAddExerciseButton =
       newExerciseItem.querySelector(".bt-add-exercise");
 
