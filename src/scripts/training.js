@@ -39,6 +39,48 @@ export function initTraining(renderDashboard) {
   const exerciseCardList = document.querySelector(".exercise-card-list");
 
   exerciseCardList.addEventListener("click", (event) => {
+    const deleteExerciseButton = event.target.closest(".btn-delete-exercise");
+
+    if (deleteExerciseButton) {
+      const confirmed = confirm(
+        "Tem certeza de que deseja excluir este exercício?",
+      );
+
+      if (!confirmed) return;
+
+      const activeDayButton = document.querySelector(".day-button.day-active");
+
+      if (!activeDayButton) return;
+
+      const selectedDay = activeDayButton.dataset.day;
+      const exerciseIndex = Number(deleteExerciseButton.dataset.exerciseIndex);
+
+      const savedTrainings = localStorage.getItem("training");
+      const trainings = savedTrainings ? JSON.parse(savedTrainings) : [];
+
+      const training = trainings.find(
+        (item) => item.dia_da_semana === selectedDay,
+      );
+
+      if (
+        !training ||
+        !Number.isInteger(exerciseIndex) ||
+        exerciseIndex < 0 ||
+        exerciseIndex >= training.exercises.length
+      ) {
+        alert("Não foi possível encontrar o exercício selecionado.");
+        return;
+      }
+
+      // Remove somente o exercício escolhido.
+      training.exercises.splice(exerciseIndex, 1);
+
+      localStorage.setItem("training", JSON.stringify(trainings));
+
+      renderDashboard(selectedDay);
+      return;
+    }
+
     const editExerciseButton = event.target.closest(".btn-edit-exercise");
 
     if (!editExerciseButton) return;
