@@ -90,7 +90,7 @@ export function initDashboard() {
 
     trainingName.textContent = training.training_name;
 
-    training.exercises.forEach((exercise) => {
+    training.exercises.forEach((exercise, index) => {
       const exerciseCard = document.createElement("li");
       exerciseCard.classList.add("exercise-card");
 
@@ -119,6 +119,27 @@ export function initDashboard() {
         method.textContent = `Método: ${exercise.method}`;
         exerciseCard.appendChild(method);
       }
+
+      const exerciseActions = document.createElement("div");
+      exerciseActions.classList.add("exercise-card-actions");
+
+      const editExerciseButton = document.createElement("button");
+      editExerciseButton.type = "button";
+      editExerciseButton.classList.add("btn-edit-exercise");
+      editExerciseButton.textContent = "Editar";
+      editExerciseButton.dataset.exerciseIndex = index;
+
+      const deleteExerciseButton = document.createElement("button");
+      deleteExerciseButton.type = "button";
+      deleteExerciseButton.classList.add("btn-delete-exercise");
+      deleteExerciseButton.textContent = "Excluir";
+      deleteExerciseButton.dataset.exerciseIndex = index;
+
+      exerciseActions.appendChild(editExerciseButton);
+      exerciseActions.appendChild(deleteExerciseButton);
+      exerciseCard.appendChild(exerciseActions);
+
+      exerciseCardList.appendChild(exerciseCard);
 
       exerciseCardList.appendChild(exerciseCard);
     });
