@@ -9,15 +9,29 @@ export function initDashboard() {
     "domingo",
   ];
 
+  let selectedDate = new Date();
+  const calendarButton = document.querySelector(".dashboard-calendar button");
+
+  const datePicker = document.createElement("input");
+  datePicker.type = "date";
+  datePicker.setAttribute("aria-label", "Selecionar data da semana");
+  datePicker.style.position = "absolute";
+  datePicker.style.width = "1px";
+  datePicker.style.height = "1px";
+  datePicker.style.opacity = "0";
+  datePicker.style.pointerEvents = "none";
+
+  document.querySelector(".dashboard-calendar").appendChild(datePicker);
+
   function updateWeekDates() {
-    const today = new Date();
+    const referenceDate = new Date(selectedDate);
 
     // Converte domingo = 0 para segunda = 0
-    const currentDayIndex = (today.getDay() + 6) % 7;
+    const dayIndex = (referenceDate.getDay() + 6) % 7;
 
-    // Encontra a segunda-feira da semana atual
-    const monday = new Date(today);
-    monday.setDate(today.getDate() - currentDayIndex);
+    // Encontra a segunda-feira da semana selecionada
+    const monday = new Date(referenceDate);
+    monday.setDate(referenceDate.getDate() - dayIndex);
 
     const dayButtons = document.querySelectorAll(".day-button");
 
@@ -62,19 +76,17 @@ export function initDashboard() {
     exerciseCardList.innerHTML = "";
 
     if (selectedDay && trainingDay) {
-      const today = new Date();
-
-      // Índice da semana: segunda = 0, domingo = 6
-      const currentDayIndex = (today.getDay() + 6) % 7;
+      // Índice da semana selecionada: segunda = 0, domingo = 6
+      const currentDayIndex = (selectedDate.getDay() + 6) % 7;
       const selectedDayIndex = weekdays.indexOf(selectedDay);
 
-      // Calcula a data do dia selecionado na semana atual
-      const selectedDate = new Date(today);
-      selectedDate.setDate(
-        today.getDate() + selectedDayIndex - currentDayIndex,
+      // Calcula a data do dia dentro da semana selecionada
+      const dayDate = new Date(selectedDate);
+      dayDate.setDate(
+        selectedDate.getDate() + selectedDayIndex - currentDayIndex,
       );
 
-      const formattedDate = selectedDate.toLocaleDateString("pt-BR", {
+      const formattedDate = dayDate.toLocaleDateString("pt-BR", {
         day: "numeric",
         month: "long",
       });
@@ -147,33 +159,59 @@ export function initDashboard() {
 
   const dayButtons = document.querySelectorAll(".day-button");
 
+  function selectDay(dayName) {
+    dayButtons.forEach((button) => {
+      button.classList.toggle("day-active", button.dataset.day === dayName);
+    });
+
+    renderDashboard(dayName);
+  }
+
   dayButtons.forEach((button) => {
     button.addEventListener("click", () => {
-      const selectedDay = button.dataset.day;
-
-      dayButtons.forEach((dayButton) => {
-        dayButton.classList.remove("day-active");
-      });
-
-      button.classList.add("day-active");
-
-      renderDashboard(selectedDay);
+      selectDay(button.dataset.day);
     });
   });
 
+  // Inicializa a semana e seleciona o dia atual
   updateWeekDates();
 
   const today = new Date();
   const todayIndex = (today.getDay() + 6) % 7;
   const todayName = weekdays[todayIndex];
 
-  dayButtons.forEach((button) => {
-    const isToday = button.dataset.day === todayName;
+  selectDay(todayName);
 
-    button.classList.toggle("day-active", isToday);
+  // Abre o seletor de data ao clicar no ícone do calendário
+  calendarButton.addEventListener("click", () => {
+    datePicker.value = [
+      selectedDate.getFullYear(),
+      String(selectedDate.getMonth() + 1).padStart(2, "0"),
+      String(selectedDate.getDate()).padStart(2, "0"),
+    ].join("-");
+
+    if (typeof datePicker.showPicker === "function") {
+      datePicker.showPicker();
+    } else {
+      datePicker.click();
+    }
   });
 
-  renderDashboard(todayName);
+  // Atualiza a semana quando uma data for escolhida
+  datePicker.addEventListener("change", () => {
+    if (!datePicker.value) return;
+
+    const [year, month, day] = datePicker.value.split("-").map(Number);
+
+    selectedDate = new Date(year, month - 1, day);
+
+    updateWeekDates();
+
+    const selectedDayIndex = (selectedDate.getDay() + 6) % 7;
+    const selectedDay = weekdays[selectedDayIndex];
+
+    selectDay(selectedDay);
+  });
 
   return renderDashboard;
 }
