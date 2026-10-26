@@ -4,6 +4,7 @@ export function initTraining(renderDashboard) {
   const trainingDashboard = document.querySelector(".training-dashboard");
   const emptyState = document.querySelector(".empty-state");
   const editButton = document.querySelector(".btn-edit-training");
+  const deleteTrainingButton = document.querySelector(".btn-delete-training");
   const exerciseList = document.querySelector(".exercise-list");
 
   const dashboardAddExerciseButton = document.querySelector(
@@ -149,6 +150,39 @@ export function initTraining(renderDashboard) {
     emptyState.hidden = true;
     trainingDashboard.hidden = true;
     trainingForm.hidden = false;
+  });
+
+  deleteTrainingButton.addEventListener("click", () => {
+    const activeDayButton = document.querySelector(".day-button.day-active");
+
+    if (!activeDayButton) return;
+
+    const selectedDay = activeDayButton.dataset.day;
+    const savedTrainings = localStorage.getItem("training");
+    const trainings = savedTrainings ? JSON.parse(savedTrainings) : [];
+
+    const training = trainings.find(
+      (item) => item.dia_da_semana === selectedDay,
+    );
+
+    if (!training) {
+      alert("Não existe treino cadastrado para este dia.");
+      return;
+    }
+
+    const confirmed = confirm(
+      `Tem certeza de que deseja excluir o treino "${training.training_name}"? Todos os exercícios desse treino também serão removidos.`,
+    );
+
+    if (!confirmed) return;
+
+    const updatedTrainings = trainings.filter(
+      (item) => item.dia_da_semana !== selectedDay,
+    );
+
+    localStorage.setItem("training", JSON.stringify(updatedTrainings));
+
+    renderDashboard(selectedDay);
   });
 
   dashboardAddExerciseButton.addEventListener("click", () => {
