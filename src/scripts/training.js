@@ -4,6 +4,7 @@ export function initTraining(renderDashboard) {
   const trainingDashboard = document.querySelector(".training-dashboard");
   const emptyState = document.querySelector(".empty-state");
   const editButton = document.querySelector(".btn-edit-training");
+  const closeFormButton = document.querySelector(".btn-close-training-form");
   const deleteTrainingButton = document.querySelector(".btn-delete-training");
   const exerciseList = document.querySelector(".exercise-list");
 
@@ -35,6 +36,47 @@ export function initTraining(renderDashboard) {
       input.value = "";
     });
   }
+
+  closeFormButton.addEventListener("click", () => {
+    // Identifica o dia que estava selecionado no dashboard
+    const activeDayButton = document.querySelector(".day-button.day-active");
+
+    const selectedDay = activeDayButton?.dataset.day;
+
+    // Descarta os dados ainda não salvos
+    form.reset();
+    resetExerciseFields();
+
+    // Limpa os modos temporários do formulário
+    delete form.dataset.editingDay;
+    delete form.dataset.addingExerciseDay;
+    delete form.dataset.editingExerciseIndex;
+    delete form.dataset.editingExerciseDay;
+
+    // Restaura os campos para o modo de criação
+    form.elements.namedItem("training_name").readOnly = false;
+    form.elements.namedItem("dia_da_semana").disabled = false;
+
+    showTrainingFields();
+
+    // Restaura o título padrão
+    document.querySelector(".training-form-name").textContent =
+      "Criar novo treino";
+
+    // Verifica se já existe algum treino salvo
+    const savedTrainings = localStorage.getItem("training");
+    const trainings = savedTrainings ? JSON.parse(savedTrainings) : [];
+
+    // Fecha o formulário e mostra a tela adequada
+    trainingForm.hidden = true;
+    trainingDashboard.hidden = trainings.length === 0;
+    emptyState.hidden = trainings.length > 0;
+
+    // Atualiza o dashboard sem recarregar a página
+    if (trainings.length > 0 && selectedDay) {
+      renderDashboard(selectedDay);
+    }
+  });
 
   // Escuta os cliques nos botões dos cards de exercícios.
   const exerciseCardList = document.querySelector(".exercise-card-list");
