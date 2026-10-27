@@ -153,9 +153,13 @@ export function initTraining(renderDashboard) {
     form.reset();
     resetExerciseFields();
 
+    // Limpa os estados de outras operações.
     delete form.dataset.editingDay;
     delete form.dataset.addingExerciseDay;
+    delete form.dataset.editingExerciseIndex;
+    delete form.dataset.editingExerciseDay;
 
+    // Define o exercício que será editado.
     form.dataset.editingExerciseIndex = String(exerciseIndex);
     form.dataset.editingExerciseDay = selectedDay;
 
@@ -248,7 +252,12 @@ export function initTraining(renderDashboard) {
     form.reset();
     resetExerciseFields();
 
+    // Limpa os estados de outras operações.
     delete form.dataset.editingDay;
+    delete form.dataset.editingExerciseIndex;
+    delete form.dataset.editingExerciseDay;
+
+    // Define o modo de adicionar exercício.
     form.dataset.addingExerciseDay = selectedDay;
 
     const selectedTraining = trainings.find(
@@ -297,6 +306,9 @@ export function initTraining(renderDashboard) {
       // Abre o formulário para cadastrar o primeiro treino desse dia.
       form.reset();
       delete form.dataset.editingDay;
+      delete form.dataset.addingExerciseDay;
+      delete form.dataset.editingExerciseIndex;
+      delete form.dataset.editingExerciseDay;
 
       const exerciseItems = exerciseList.querySelectorAll(".exercise-item");
 
