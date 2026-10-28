@@ -139,16 +139,56 @@
   font-weight: 500;
 }
 
-.btn-edit-training {
-  font-size: 0.9rem;
+/* AÇÕES DO TREINO */
+.training-day-actions {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  flex-wrap: wrap;
+}
+
+.training-day-actions button {
+  font-size: 0.85rem;
   font-weight: 600;
-
-  padding: 0.6rem 1.5rem;
-
-  border: none;
+  padding: 0.6rem 1rem;
+  border: 1px solid transparent;
   border-radius: 10px;
-
   cursor: pointer;
+  transition:
+    background-color 0.2s ease,
+    transform 0.2s ease;
+}
+
+.training-day-actions button:hover {
+  transform: translateY(-1px);
+}
+
+/* GERAR PDF */
+.btn-generate-pdf {
+  background: #16a34a;
+  color: #ffffff;
+}
+
+.btn-generate-pdf:hover {
+  background: #15803d;
+}
+
+/* EDITAR TREINO */
+.btn-edit-training {
+  background: white;
+  color: #1c1c1c;
+  border-color: #525252;
+}
+
+/* EXCLUIR TREINO */
+.btn-delete-training {
+  background: var(--danger);
+  color: var(--text-primary);
+  border-color: #7f1d1d;
+}
+
+.btn-delete-training:hover {
+  background: #450a0a;
 }
 
 /* EXERCISE LIST */
