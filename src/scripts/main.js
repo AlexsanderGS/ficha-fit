@@ -1,10 +1,12 @@
 import { initTraining } from "./training.js";
 import { initExercise } from "./exercise.js";
 import { initDashboard } from "./dashboard.js";
+import { initPdf } from "./pdf.js";
 
 initExercise();
 const renderDashboard = initDashboard();
 initTraining(renderDashboard);
+initPdf();
 
 const createButton = document.querySelector(".btn-create");
 const emptyState = document.querySelector(".empty-state");
