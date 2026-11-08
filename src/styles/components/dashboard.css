@@ -202,61 +202,71 @@
 .exercise-card {
   display: flex;
   flex-direction: column;
-  gap: 1.25rem;
+  gap: 0.75rem;
 
   padding: 1.25rem;
 
   background: var(--bg-secondary);
-  border: none;
+  border: 1px solid rgba(255, 255, 255, 0.08);
   border-radius: 12px;
 }
 
-.exercise-header {
+/* NOME DO EXERCÍCIO */
+.exercise-card h3 {
+  font-size: 1.2rem;
+  font-weight: 700;
+  color: var(--text-primary);
+  margin-bottom: 0.25rem;
+}
+
+/* INFORMAÇÕES DO EXERCÍCIO */
+.exercise-card p {
+  font-size: 0.95rem;
+  line-height: 1.4;
+  color: var(--text-secondary);
+  margin: 0;
+}
+
+/* AÇÕES DO CARD */
+.exercise-card-actions {
   display: flex;
   align-items: center;
-  justify-content: space-between;
+  gap: 0.75rem;
+  margin-top: 0.5rem;
 }
 
-.exercise-header h3 {
-  font-size: 18px;
-  font-weight: 600;
-  flex: 1;
-  min-width: 0;
-}
-
-.exercise-button {
-  display: flex;
-  align-items: center;
-  gap: 0.5rem;
-  flex-shrink: 0;
-}
-
-.exercise-button button {
-  font-size: 0.7rem;
+.exercise-card-actions button {
+  font-size: 0.85rem;
   font-weight: 600;
 
-  padding: 0.55rem 0.65rem;
+  padding: 0.6rem 1rem;
 
-  border: none;
-  border-radius: 10px;
+  border: 1px solid transparent;
+  border-radius: 8px;
 
   cursor: pointer;
+
+  transition:
+    background-color 0.2s ease,
+    transform 0.2s ease;
 }
 
-.delete-btn {
-  background-color: var(--danger);
+.exercise-card-actions button:hover {
+  transform: translateY(-1px);
+}
+
+/* EDITAR EXERCÍCIO */
+.btn-edit-exercise {
+  background: white;
+  color: #1c1c1c;
+}
+
+/* EXCLUIR EXERCÍCIO */
+.btn-delete-exercise {
+  background: var(--danger);
   color: white;
 }
 
-.exercise-info {
-  display: flex;
-  flex-direction: column;
-  align-items: start;
-  justify-content: space-between;
-  gap: 1rem;
-}
-
-.exercise-info span {
-  font-size: 1rem;
-  color: var(--text-secondary);
+.btn-delete-exercise:hover {
+  background: #450a0a;
 }
