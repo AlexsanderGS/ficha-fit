@@ -78,9 +78,7 @@ Isso significa que:
 
 ## 🌐 Aplicação online
 
-**Acesse:** [FichaFit — aplicação online](INSIRA_AQUI_A_URL_DA_VERCEL)
-
-> Substitua o endereço acima pela URL gerada após o deploy na Vercel.
+**Acesse:** [FichaFit — aplicação online](https://ficha-fit-ruddy.vercel.app/)
 
 ## 📱 Responsividade
 
