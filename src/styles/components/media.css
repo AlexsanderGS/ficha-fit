@@ -384,12 +384,14 @@
     font-size: 1.3rem;
   }
 
+  /* FOOTER */
   .footer {
-    padding: 1rem 2rem;
+    padding: 0.8rem 1rem;
   }
 
   .footer-infos {
-    font-size: 1.2rem;
+    font-size: 0.9rem;
+    justify-content: center;
   }
 
   .footer-links {
@@ -397,7 +399,7 @@
   }
 
   .footer-links img {
-    width: 46px;
-    height: 46px;
+    width: 38px;
+    height: 38px;
   }
 }
